@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/toastr.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/toastr.min.css') }}" />
+    <title>{% block title %}{% endblock %} - Player</title>
+    {% endblock %}
+    <div id="base-topnav" class="topnav">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('register') }}">Registrar</a>
+        <a href="#login">Logar</a>
+        <a href="#player">Player de Música</a>
+    </div>
+</head>
+<body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <footer class="custom-footer">
+        <p>Company © Matheus Nunes. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

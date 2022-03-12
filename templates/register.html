@@ -1,0 +1,51 @@
+{% extends "shared/base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+{% endblock %}
+{% block content %}
+<form id="register-user-form" action="#" method="post">
+    <div class="container">
+      <div style="padding: 100px;" class="row d-flex justify-content-center align-items-center">
+        <div class="col-xl-9">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body">
+              <div class="row align-items-center pt-4 pb-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Nome</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="username-input" type="text" class="form-control form-control-lg" name="nome"/>
+                </div>
+              </div>
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Usuário</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                  <input id="user-input" type="text" class="form-control form-control-lg" name="usuario"/>
+                </div>
+              </div>
+              <hr class="mx-n3">
+              <div class="row align-items-center py-3">
+                <div class="col-md-3 ps-5">
+                  <h6 class="mb-0">Senha</h6>
+                </div>
+                <div class="col-md-9 pe-5">
+                    <input id="password-input" type="password" class="form-control form-control-lg" name="senha"/>
+                </div>
+              </div>  
+              <hr class="mx-n3">
+              <div style="float: right;" class="px-5 py-4">
+                <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
