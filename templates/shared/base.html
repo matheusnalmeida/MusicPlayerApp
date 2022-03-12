@@ -25,6 +25,9 @@
     <div id="content">{% block content %}{% endblock %}</div>
     <footer class="custom-footer">
         <p>Company © Matheus Nunes. All rights reserved.</p>
+        <img
+            src="{{ url_for('static', filename='svg/Cc-by-nc_icon.svg') }}"
+            alt="cc"/>
     </footer>
 </body>
 </html>

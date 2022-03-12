@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, g
+from flask import Flask, render_template, request, redirect, url_for, session, g, jsonify, make_response
 from models.user import User
 from services.user_service import UserService
 from utils.util import valid_acess
@@ -25,29 +25,28 @@ def register():
     if(request.method == 'GET'):
         return render_template('register.html')
     else:
-        nome = request.form['nome']
-        usuario = request.form['usuario']
-        senha = request.form['senha']
+        novoUsuario = User(
+            request.form['nome'],
+            request.form['usuario'],
+            request.form['senha'])
 
-        novoUsuario = User(nome, usuario, senha)
-        if(novoUsuario.is_valid()):
-            user_service.insert_user(novoUsuario)
+        response = user_service.insert_user(novoUsuario)        
+        if response.success:
+            response.url = url_for('login')
 
-        return redirect(url_for('login'))
+        return jsonify(response.to_json())
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     if(request.method == 'GET'):
         return render_template('login.html')
     else:
-        usuario = request.form['usuario']
-        senha = request.form['senha']
-        user = user_service.get_user_by_username_pass(usuario, senha)
-        if user:
-            session['logged_user'] = vars(user)
-            return redirect(url_for('index'))
-    
-    return redirect(url_for('index'))
+        response = user_service.login(request.form['usuario'], request.form['senha'])
+        if response.success:
+            response.url = url_for('index')
+            session['logged_user'] = vars(response.data)
+
+        return jsonify(response.to_json()) 
 
 @app.route('/logout/')
 def logout():
@@ -60,6 +59,3 @@ def music_player():
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8000, debug=True)
- 
-
-# str(uuid.uuid4())
