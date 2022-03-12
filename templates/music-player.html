@@ -1,0 +1,15 @@
+{% extends "shared/base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div style="padding: 100px;" class="row d-flex justify-content-center align-items-center">
+            <audio controls>
+                <source src="{{ url_for('static', filename='musics/dropouts-let-go-ncs-release.mp3') }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>            
+        </div>
+    </div>        
+{% endblock %}

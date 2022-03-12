@@ -12,9 +12,13 @@
     {% endblock %}
     <div id="base-topnav" class="topnav">
         <a href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('register') }}">Registrar</a>
-        <a href="{{ url_for('login') }}">Logar</a>
-        <a href="#player">Player de Música</a>
+        {% if g.logged_user %}
+            <a href="{{ url_for('music_player') }}">Player de Música</a>
+            <a href="{{ url_for('logout') }}">Logout</a>        
+        {% else %}
+            <a href="{{ url_for('register') }}">Registrar</a>
+            <a href="{{ url_for('login') }}">Logar</a>
+        {% endif %}
     </div>
 </head>
 <body>

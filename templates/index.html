@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
 {% endblock %}
 {% block content %}
-    <h1 class="home-text">Bem Vindo!</h1>
+    <h1 class="home-text">Bem Vindo {{ g.logged_user.nome if g.logged_user is not none else '' }} !</h1>
     <p class="home-text">
       Esse é um aplicativo de player de música, em que é possivel cadastrar usuários e ouvir músicas depois de logado
     </p>

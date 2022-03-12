@@ -1,7 +1,9 @@
+import uuid
+
 class User:
 
-    def __init__(self, id: str, nome: str, usuario: str, senha: str) -> None:
-        self.id = id
+    def __init__(self, nome: str, usuario: str, senha: str) -> None:
+        self.id =  str(uuid.uuid4())
         self.nome = nome.strip()
         self.usuario = usuario.strip()
         self.senha = senha
